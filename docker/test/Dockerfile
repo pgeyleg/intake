@@ -1,4 +1,4 @@
-FROM casecommons/ca_intake_base_image:latest
+FROM 429614120872.dkr.ecr.us-west-2.amazonaws.com/casecommons/ruby
 
 ENV APP_HOME /ca_intake
 RUN mkdir $APP_HOME
