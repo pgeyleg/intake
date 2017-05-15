@@ -14,11 +14,8 @@ services:
     environment:
       RAILS_ENV: production
       API_URL: "http://app:3000"
-      SECRET_KEY_BASE: "kiHthL9VZLTDgVbryIuVefuFqVAX9lHNvUHysYZAFaA="
   nginx:
-    build:
-      context: .
-      dockerfile: Dockerfile.nginx
+    image: 429614120872.dkr.ecr.us-west-2.amazonaws.com/casecommons/nginx
     links:
       - app
     ports:
