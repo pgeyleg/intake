@@ -1,0 +1,2 @@
+FROM postgres:9.5-alpine
+HEALTHCHECK --interval=3s --retries=20 CMD psql -U postgres -c "SELECT * from pg_database"

@@ -1,0 +1,2 @@
+FROM redis:alpine
+HEALTHCHECK --interval=3s --retries=20 CMD redis-cli info
