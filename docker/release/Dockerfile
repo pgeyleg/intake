@@ -1,4 +1,6 @@
 FROM 429614120872.dkr.ecr.us-west-2.amazonaws.com/casecommons/ruby
+MAINTAINER Pema Geyleg <pema@casecommons.org>
+HEALTHCHECK --interval=3s --retries=20 CMD ${HEALTHCHECK:-curl -fs localhost:${HTTP_PORT:-3000}}
 
 ENV APP_HOME /ca_intake
 RUN mkdir $APP_HOME
@@ -9,9 +11,6 @@ RUN dpkg -i /release/*.deb && rm -rf /release
 
 ENV BUNDLE_PATH /ca_intake/ruby_gems
 
-COPY scripts/release.sh /usr/local/bin/release.sh
-RUN chmod +x /usr/local/bin/release.sh
-
 VOLUME ["/ca_intake/public"]
 
-ENTRYPOINT ["release.sh"]
+CMD ["bundle","exec","puma","-e","production","-C","config/puma.rb"]
